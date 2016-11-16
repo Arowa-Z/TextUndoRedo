@@ -54,11 +54,11 @@ public class TextUndoRedo implements TextWatcher {
     }
 
     public boolean canUndo() {
-        return canUndoOrRedo(true);
+        return offset.prior != null;
     }
 
     public boolean canRedo() {
-        return canUndoOrRedo(false);
+        return offset.next != null;
     }
 
     public void cleanRecord(){
@@ -89,14 +89,6 @@ public class TextUndoRedo implements TextWatcher {
             offset.prior = record.prior;
             record.prior = null;
             record.next = null;
-        }
-    }
-
-    private boolean canUndoOrRedo(boolean Or) {
-        if (Or) {
-            return offset.prior != null;
-        } else {
-            return offset.next != null;
         }
     }
 
