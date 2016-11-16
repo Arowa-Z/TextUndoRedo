@@ -1,5 +1,5 @@
 # TextUndoRedo
-  This is an android text `undo redo` library.The library is very `small`, only `a Java file`.
+  This is an android text `undo redo` library. The library is very `small`, only `a Java file`.
 
 # ScreenShot
 ![demo](image/demo.gif "demo")
@@ -19,11 +19,31 @@
   ```
 
 # Note
-1. Call `exeUndo()` before please make sure that `canUndo()` is `true`, `exeRedo()` too.
+Call `exeUndo()` before please make sure that `canUndo()` is `true`, `exeRedo()` too.  
+  ```java
+  if(canUndo){
+    exeUndo();
+  }
+  
+  if(canRedo){
+    exeRedo();
+  }
+  ```
+  This is the safest.
 
-2. You can use the interface `TextChangeInfo` to update `canUndo()` and `canRedo()`.
-
-3. You need to deal with the issue of the screen direction.
+or, You can use the interface `TextChangeInfo` to in time call `canUndo()` and `canRedo()`.  
+  ```java
+  public interface TextChangeInfo {
+    void textAction();
+  }
+  ```
+  ```java
+  public void textAction() {
+    btn_undo.setEnabled(TUR.canUndo());
+    btn_redo.setEnabled(TUR.canRedo());
+  }
+  ```
+but, You need to deal with the issue of the screen direction.(Every time a `new TextUndoRedo` will create a new `Record`)
   ```xml
   android:configChanges="orientation|keyboardHidden|screenSize"
   ```
@@ -37,9 +57,9 @@
   ```
   or
   ```xml
-  ...
+  ......
   ```
-4. For the above these problems, you can consult [sample](sample/src/main) :)
+For the above these problems, you can consult [sample](sample/src/main) :)
 
 # Author
 Name: [Arowa_Z](https://github.com/Arowa-Z)  
