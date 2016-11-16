@@ -10,7 +10,7 @@ import android.widget.EditText;
  * Created by Arowa_Z on 2016/4/26.
  */
 public class TextUndoRedo implements TextWatcher {
-    public interface TextChangInfo {
+    public interface TextChangeInfo {
         void textAction();
     }
 
@@ -35,10 +35,10 @@ public class TextUndoRedo implements TextWatcher {
 
     private Record offset;
     private Editable editable;
-    private TextChangInfo info;
+    private TextChangeInfo info;
     private boolean isUndoOrRedo;
 
-    public TextUndoRedo(EditText editText, TextChangInfo info) {
+    public TextUndoRedo(EditText editText, TextChangeInfo info) {
         editText.addTextChangedListener(this);
         this.editable = editText.getEditableText();
         this.info = info;
