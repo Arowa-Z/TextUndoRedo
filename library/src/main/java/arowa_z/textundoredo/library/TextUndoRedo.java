@@ -35,7 +35,7 @@ public class TextUndoRedo implements TextWatcher {
 
     private Record offset;
     private Editable editable;
-    private TextChangInfo info;
+    private TextChangeInfo info;
     private boolean isUndoOrRedo;
 
     public TextUndoRedo(EditText editText, TextChangeInfo info) {
