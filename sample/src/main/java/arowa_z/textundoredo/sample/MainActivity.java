@@ -9,7 +9,7 @@ import android.widget.EditText;
 import arowa_z.textundoredo.library.TextUndoRedo;
 
 public class MainActivity extends Activity implements
-        TextUndoRedo.TextChangInfo,
+        TextUndoRedo.TextChangeInfo,
         View.OnClickListener {
     private TextUndoRedo TUR;
     private Button btn_undo;
